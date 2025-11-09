@@ -4,8 +4,20 @@
 
 /* base font stack + a few custom utilities */
 @layer base {
-  html,body,#root { height: 100%; }
-  body { @apply bg-white text-slate-900 antialiased; }
+  /* Force scrollbar to always show to prevent layout shift */
+  html { @apply overflow-y-scroll; }
+  
+  /* Set root height and ensure scrollbar gutter is reserved */
+  html, body, #root { 
+    height: 100%;
+    scrollbar-gutter: stable;
+  }
+  
+  body { 
+    @apply bg-white text-slate-900 antialiased;
+    /* Prevent horizontal overflow */
+    @apply overflow-x-hidden;
+  }
 }
 
 @layer components {
