@@ -2,58 +2,39 @@ import React from 'react'
 
 export default function About() {
   return (
-    <div className="page about-page">
-      <section className="about">
-        <h2>About me</h2>
-        <p>
-          I'm Aldrich Vin, a software engineer focused on building reliable and
-          performant web applications. I specialize in front-end engineering
-          with production experience in React and TypeScript and collaborate
-          closely with design and product teams to ship customer-facing features.
-        </p>
+    <div className="max-w-3xl mx-auto px-6 py-12">
+      <header className="mb-6">
+        <h2 className="text-3xl font-extrabold">About</h2>
+        <p className="mt-2 text-slate-600">I build web products and data features used by real people. I focus on fast experiences and clear design.</p>
+      </header>
 
-        <h3>Experience highlights</h3>
-        <ul>
-          <li>
-            Monash Macathon 2025 — Built <em>Monash Mates</em>, an Android peer-mentoring
-            app (team of 4): recommender matching, real-time chat, auth and media
-            upload using Firebase; Kotlin + Jetpack Compose.
-          </li>
-          <li>
-            FIT3163 Data Science Project — NBA Player Ranking Dashboard: full-stack
-            app (Flask, Python, R, MongoDB) with custom ranking algorithms, Chart.js visualizations, and automated data pipelines (hoopR, nbastatR).
-          </li>
-          <li>
-            Operations experience managing inventory, procurement and analytics for an SME (Veve Clothing).
-          </li>
-        </ul>
+      <section className="space-y-6">
+        <div>
+          <h4 className="text-sm font-semibold text-slate-500 uppercase">Selected highlights</h4>
+          <ul className="mt-3 list-disc pl-5 text-slate-700 space-y-2">
+            <li>Monash Macathon — Monash Mates: Android app with recommender, real-time chat, auth; Kotlin & Firebase.</li>
+            <li>FIT3163 Data Project — NBA Ranking Dashboard: Flask backend, Python/R pipelines, Chart.js visualizations.</li>
+            <li>Operations & analytics experience at Veve Clothing — inventory systems and procurement insights.</li>
+          </ul>
+        </div>
 
-        <h3>Education</h3>
-        <ul>
-          <li>Monash University — BCompSc (GPA: 3.75/4.0). Expected graduation: Dec 2025.</li>
-          <li>Jakarta International College — Bachelor-level program (GPA: 4.0/4.0). Feb 2024.</li>
-          <li>Bina Tunas Bangsa School — IB Diploma (Grade: 37/45). May 2023.</li>
-        </ul>
+        <div>
+          <h4 className="text-sm font-semibold text-slate-500 uppercase">Education</h4>
+          <div className="mt-2 text-slate-700">Monash University — BCompSc (expected Dec 2025)</div>
+        </div>
 
-        <h3>Technical skills</h3>
-        <p>
-          Languages: Python, Java, SQL, JavaScript · Tools/Frameworks: Pandas, NumPy, Firebase (Auth, Firestore, Realtime DB, Storage), Flask, Docker, Git · Interests: Data Science, Machine Learning, Recommender Systems, Data Visualization
-        </p>
+        <div>
+          <h4 className="text-sm font-semibold text-slate-500 uppercase">Skills</h4>
+          <p className="mt-2 text-slate-700">Python · Java · JavaScript · SQL · React · Flask · Firebase · Docker · Data & ML · Visualisation</p>
+        </div>
 
-        <h3>Resume</h3>
-        <p>
-          View or download my full resume:
-          {' '}
-          <a href="/assets/resume.pdf" download>
-            Download Resume (PDF)
-          </a>
-        </p>
+        <div>
+          <a className="inline-block mt-2 rounded-md px-4 py-2 bg-slate-900 text-white" href="/assets/resume.pdf" download>Download resume</a>
+        </div>
 
-        <h3>Contact</h3>
-        <p>
-          Melbourne, VIC • 0480 607 563 • <a href="mailto:aldrichvin040205@gmail.com">aldrichvin040205@gmail.com</a>
-          {' '}• <a href="https://www.linkedin.com/in/aldrich-vin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </p>
+        <div className="pt-6 border-t border-slate-100 text-sm text-slate-500">
+          Melbourne, VIC • 0480 607 563 • <a className="text-slate-700" href="mailto:aldrichvin040205@gmail.com">aldrichvin040205@gmail.com</a>
+        </div>
       </section>
     </div>
   )

@@ -1,6 +1,8 @@
 import React from 'react'
 
 import ProfileSVG from '../assets/profile.svg'
+import SelectedProjects from '../components/SelectedProjects'
+import { motion } from 'framer-motion'
 
 function SkillPill({ name, color }) {
   return (
@@ -12,50 +14,35 @@ function SkillPill({ name, color }) {
 
 export default function Home() {
   return (
-    <div className="page home-page">
-      <section className="hero">
-        <img src={ProfileSVG} alt="Profile" className="profile-img" />
-        <div>
-          <h2>Hi — I'm Aldrich Vincent</h2>
-          <p className="lead">
-            Software engineer & data enthusiast based in Melbourne, VIC. I build
-            data-informed web applications and ML-enabled features — from
-            production React front-ends to data pipelines and recommender systems.
-            I focus on performance, accessibility, and delivering measurable
-            outcomes.
-          </p>
+    <motion.div className="page home-page max-w-5xl mx-auto px-6"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <section className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8 md:gap-12 py-12">
+        <div className="md:flex-1">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">Aldrich Vincent</h1>
+          <p className="mt-4 text-lg text-slate-600 max-w-xl">Software engineer & data-focused builder. I design and ship performant web apps, data-driven features, and production ML prototypes.</p>
 
-          <p style={{ marginTop: 8, fontSize: '0.95rem', color: 'var(--muted)' }}>
-            Melbourne, VIC • 0480 607 563 • <a href="mailto:aldrichvin040205@gmail.com">aldrichvin040205@gmail.com</a> • <a href="https://www.linkedin.com/in/aldrich-vin" target="_blank" rel="noreferrer">LinkedIn</a>
-          </p>
+          <div className="mt-6 flex flex-wrap gap-3 items-center">
+            <a className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-slate-900 text-white text-sm font-semibold shadow-sm hover:translate-y-[-2px] transition-transform" href="/projects">Selected projects</a>
+            <a className="text-sm text-slate-600 hover:text-slate-900" href="/assets/resume.pdf" download>Download resume</a>
+          </div>
+
+          <div className="mt-6 flex gap-3 flex-wrap">
+            <span className="chip">React</span>
+            <span className="chip">TypeScript</span>
+            <span className="chip">Python</span>
+            <span className="chip">Data & ML</span>
+          </div>
+        </div>
+
+        <div className="md:w-44 md:shrink-0">
+          <motion.img src={ProfileSVG} alt="Aldrich" className="w-44 h-44 rounded-xl object-cover border border-slate-100 shadow-soft" whileHover={{ scale: 1.02 }} />
         </div>
       </section>
 
-      <section className="diagrams">
-        <h3>Core skills</h3>
-        <div className="skills-row">
-          <SkillPill name="React" color="#61dafb" />
-          <SkillPill name="TypeScript" color="#2f74c0" />
-          <SkillPill name="Python" color="#ffd43b" />
-          <SkillPill name="Data & ML" color="#7dd3fc" />
-        </div>
-
-        <h3 style={{ marginTop: 18 }}>What I deliver</h3>
-        <div className="overview-cards">
-          <div className="card">
-            <strong>Product-ready apps</strong>
-            <div className="card-body">Built customer-facing apps and dashboards (React, Flask) used in classroom and club projects.</div>
-          </div>
-          <div className="card">
-            <strong>Data & Recommenders</strong>
-            <div className="card-body">Experience building ranking algorithms, pipelines (R, Python) and recommender systems using Firebase and custom scoring.</div>
-          </div>
-          <div className="card">
-            <strong>Mobile & Real-time</strong>
-            <div className="card-body">Implemented Android real-time features (chat, auth, media upload) and collaborated in Agile teams.</div>
-          </div>
-        </div>
-      </section>
-    </div>
+      <SelectedProjects />
+    </motion.div>
   )
 }

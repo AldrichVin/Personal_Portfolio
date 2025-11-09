@@ -1,29 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { projects } from '../projects'
-
-function ExternalLink({ href, children }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="project-link">
-      {children}
-    </a>
-  )
-}
+import { motion } from 'framer-motion'
 
 export default function Projects() {
-  const [query, setQuery] = useState('')
+  const [q, setQ] = useState('')
   const [copied, setCopied] = useState('')
 
   const filtered = projects.filter((p) => {
-    const q = query.trim().toLowerCase()
-    if (!q) return true
-    return (
-      p.name.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q))
-    )
+    const t = q.trim().toLowerCase()
+    if (!t) return true
+    return p.name.toLowerCase().includes(t) || (p.description && p.description.toLowerCase().includes(t))
   })
 
   useEffect(() => {
     if (!copied) return
-    const t = setTimeout(() => setCopied(''), 1800)
+    const t = setTimeout(() => setCopied(''), 1400)
     return () => clearTimeout(t)
   }, [copied])
 
@@ -31,72 +22,34 @@ export default function Projects() {
     try {
       await navigator.clipboard.writeText(url)
       setCopied(name || 'copied')
-    } catch (err) {
-      // fallback
-      const tmp = document.createElement('input')
-      tmp.value = url
-      document.body.appendChild(tmp)
-      tmp.select()
-      document.execCommand('copy')
-      document.body.removeChild(tmp)
+    } catch {
       setCopied(name || 'copied')
     }
   }
 
-  function handleKeyOpen(e, url) {
-    if (e.key === 'Enter') {
-      window.open(url, '_blank', 'noopener')
-    }
-  }
-
   return (
-    <div className="page projects-page">
-      <div className="controls">
-        <label className="search-label">
-          <input
-            className="search"
-            placeholder="Search projects..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search projects"
-          />
-        </label>
+    <div className="max-w-4xl mx-auto px-6">
+      <div className="mb-6">
+        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search projects" className="w-full rounded-lg border border-slate-100 p-3" />
       </div>
 
-      <section className="projects">
-        {filtered.length === 0 && <div className="no-results">No projects match “{query}”</div>}
-
+      <div className="grid grid-cols-1 gap-5">
         {filtered.map((p) => (
-          <article
-            key={p.url}
-            className="project"
-            tabIndex={0}
-            onKeyDown={(e) => handleKeyOpen(e, p.url)}
-            aria-labelledby={`title-${p.url}`}
-          >
-            <div className="project-row">
-              <h2 className="project-name" id={`title-${p.url}`}>
-                <ExternalLink href={p.url}>{p.name}</ExternalLink>
-              </h2>
-
-              <div className="project-actions">
-                <button
-                  className="copy-btn"
-                  onClick={() => handleCopy(p.url, p.name)}
-                  aria-label={`Copy ${p.name} link`}
-                  title="Copy link"
-                >
-                  Copy
-                </button>
-              </div>
+          <motion.article key={p.url} whileHover={{ y: -4 }} className="card flex items-start justify-between">
+            <div>
+              <a href={p.url} target="_blank" rel="noreferrer" className="text-lg font-semibold text-slate-900">{p.name}</a>
+              {p.description && <div className="text-sm text-slate-600 mt-1">{p.description}</div>}
             </div>
-
-            {p.description && <p className="project-desc">{p.description}</p>}
-          </article>
+            <div className="flex items-center gap-2">
+              <button onClick={() => handleCopy(p.url, p.name)} className="text-sm text-slate-600 border border-slate-100 rounded-md px-3 py-1">Copy</button>
+            </div>
+          </motion.article>
         ))}
-      </section>
+      </div>
 
-      {copied && <div className="toast">Copied — {copied}</div>}
+      {copied && (
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="fixed right-6 bottom-6 bg-slate-900 text-white px-4 py-2 rounded-md shadow-soft">Copied — {copied}</motion.div>
+      )}
     </div>
   )
 }
