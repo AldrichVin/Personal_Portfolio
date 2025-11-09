@@ -16,38 +16,43 @@ export default function Home() {
       <section className="hero">
         <img src={ProfileSVG} alt="Profile" className="profile-img" />
         <div>
-          <h2>Hello — I'm Aldrich</h2>
+          <h2>Hi — I'm Aldrich Vincent</h2>
           <p className="lead">
-            I'm a software developer focused on building simple, delightful web
-            experiences. I enjoy clean design, performant front-ends, and
-            learning new tools. This site is a minimal showcase of my projects
-            and background.
+            Software engineer & data enthusiast based in Melbourne, VIC. I build
+            data-informed web applications and ML-enabled features — from
+            production React front-ends to data pipelines and recommender systems.
+            I focus on performance, accessibility, and delivering measurable
+            outcomes.
+          </p>
+
+          <p style={{ marginTop: 8, fontSize: '0.95rem', color: 'var(--muted)' }}>
+            Melbourne, VIC • 0480 607 563 • <a href="mailto:aldrichvin040205@gmail.com">aldrichvin040205@gmail.com</a> • <a href="https://www.linkedin.com/in/aldrich-vin" target="_blank" rel="noreferrer">LinkedIn</a>
           </p>
         </div>
       </section>
 
       <section className="diagrams">
-        <h3>Key strengths</h3>
+        <h3>Core skills</h3>
         <div className="skills-row">
           <SkillPill name="React" color="#61dafb" />
           <SkillPill name="TypeScript" color="#2f74c0" />
-          <SkillPill name="CSS" color="#ff7b7b" />
-          <SkillPill name="Performance" color="#7dd3fc" />
+          <SkillPill name="Python" color="#ffd43b" />
+          <SkillPill name="Data & ML" color="#7dd3fc" />
         </div>
 
-        <h3 style={{ marginTop: 18 }}>Quick overview</h3>
+        <h3 style={{ marginTop: 18 }}>What I deliver</h3>
         <div className="overview-cards">
           <div className="card">
-            <strong>Small & focused</strong>
-            <div className="card-body">Minimal, fast portfolio websites and prototypes.</div>
+            <strong>Product-ready apps</strong>
+            <div className="card-body">Built customer-facing apps and dashboards (React, Flask) used in classroom and club projects.</div>
           </div>
           <div className="card">
-            <strong>Accessible</strong>
-            <div className="card-body">Keyboard-first interactions and clear contrast.</div>
+            <strong>Data & Recommenders</strong>
+            <div className="card-body">Experience building ranking algorithms, pipelines (R, Python) and recommender systems using Firebase and custom scoring.</div>
           </div>
           <div className="card">
-            <strong>Deployable</strong>
-            <div className="card-body">Ready for Vercel / Netlify / GitHub Pages.</div>
+            <strong>Mobile & Real-time</strong>
+            <div className="card-body">Implemented Android real-time features (chat, auth, media upload) and collaborated in Agile teams.</div>
           </div>
         </div>
       </section>
