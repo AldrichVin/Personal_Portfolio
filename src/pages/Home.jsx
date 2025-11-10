@@ -38,7 +38,14 @@ export default function Home() {
         </div>
 
         <div className="md:w-44 md:shrink-0">
-          <motion.img src={ProfileSVG} alt="Aldrich" className="w-44 h-44 rounded-xl object-cover border border-slate-100 shadow-soft" whileHover={{ scale: 1.02 }} />
+          {/* Prefer a user-supplied JPG at runtime; fall back to the bundled SVG if the JPG is not present. */}
+          <motion.img
+            src="/src/assets/profile.jpg"
+            alt="Aldrich"
+            className="w-44 h-44 rounded-xl object-cover border border-slate-100 shadow-soft"
+            whileHover={{ scale: 1.02 }}
+            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = ProfileSVG }}
+          />
         </div>
       </section>
 

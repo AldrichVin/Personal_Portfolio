@@ -22,8 +22,7 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-6 w-full">
           <header className="flex items-center justify-between py-6 border-b border-slate-100">
             <div>
-              <div className="text-lg font-bold">Aldrich Vincent</div>
-              <div className="text-xs text-slate-500">Software engineer — React · Python · Data</div>
+              <div className="text-lg font-bold">Personal Portfolio</div>
             </div>
             <Nav />
           </header>

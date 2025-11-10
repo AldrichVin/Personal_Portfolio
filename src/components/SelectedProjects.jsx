@@ -5,14 +5,22 @@ function Thumb({ title, desc, color }) {
   return (
     <motion.a
       whileHover={{ y: -6 }}
-      className="group block rounded-xl overflow-hidden shadow-soft"
+      className="group block rounded-xl overflow-hidden shadow-soft relative"
       style={{ background: color }}
       href="#"
     >
-      <div className="h-40 sm:h-48 flex items-end p-4 bg-gradient-to-t from-black/30 to-transparent">
+      {/* top visual area */}
+      <div className="h-40 sm:h-48 flex items-end p-4 bg-gradient-to-t from-black/30 to-transparent rounded-t-xl">
         <div className="text-white font-semibold text-lg">{title}</div>
       </div>
-      <div className="p-4 bg-white">
+
+      {/*
+        bottom info bar must fully cover rounded bottom corners.
+        We add rounded-b-xl so it matches the parent's radius and
+        a higher z-index to ensure it sits above any semi-transparent
+        overlays. Keep padding and spacing unchanged.
+      */}
+      <div className="absolute left-0 right-0 bottom-0 bg-white rounded-b-xl z-10 px-4 h-16 sm:h-20 flex items-center">
         <div className="text-sm text-slate-600">{desc}</div>
       </div>
     </motion.a>
