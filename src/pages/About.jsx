@@ -20,7 +20,7 @@ export default function About() {
 
         <div>
           <h4 className="text-sm font-semibold text-slate-500 uppercase">Education</h4>
-          <div className="mt-2 text-slate-700">Monash University — BCompSc (expected Dec 2025)</div>
+          <div className="mt-2 text-slate-700">Monash University — Data Science (expected Dec 2025)</div>
         </div>
 
         <div>
